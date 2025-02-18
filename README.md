@@ -22,7 +22,7 @@ Cluster assignments are learned by identifying consistent pseudo-labels across m
 
 ### Authors:
 
-* Jonathan Svirsky
+* [Jonathan Svirsky](https://github.com/jsvir)
 * Ran Eisenberg
 * Ofir Lindenbaum
 
