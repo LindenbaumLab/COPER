@@ -14,7 +14,7 @@ Cluster assignments are learned by identifying consistent pseudo-labels across m
 ### How to run:
 
 0. Download the datasets here: [multiview datasets](https://biu365-my.sharepoint.com/:f:/g/personal/svirskj_biu_ac_il/Es78WjrYx2NJqdFbYR1giz4BHHk-UaCmzphyLolkTVYZdQ?e=l46YTf)
-   - please see the datasets details in DATASETS.md
+   - please see the datasets details in [DATASETS.md](https://github.com/LindenbaumLab/COPER/blob/main/DATASETS.md)
 2. Update the path to the dataset in config files `conf/<dataset_name>.yaml`
 2. Run training: `python coper.py --cfg <config file>`
 3. Please note that for improved stability the model is trained with decoders by default.
