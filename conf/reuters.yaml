@@ -1,0 +1,40 @@
+seeds: 10
+
+encdec:
+  - 512
+  - 512
+  - 1024
+  - &bn_layer 10
+  - 1024
+  - 512
+  - 512
+clustering_layer:
+  - *bn_layer
+  - 1024
+
+dataset_path: /path/to/reuters_data_version2.pkl
+batch_size: 128
+stage_I_epochs: 10
+stage_II_epochs: 30
+stage_III_epochs: 50
+
+train_fusion_start_epochs: 250000
+apply_reliable_pseudo_labels: true
+pseudo_labels_k: 20
+train_with_pseudo_labels_shuffle: true
+cosine_neighbor_threshold: 0.95 # in range [-1,1]
+lr: 0.0001
+logs_dir: logs
+
+trainer:
+  accelerator: gpu
+  devices: 1
+  max_epochs: 150
+  deterministic: true
+  logger: true
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 5
+  enable_checkpointing: false
+  sync_batchnorm: true
+  num_sanity_val_steps: 0
+  enable_progress_bar: true

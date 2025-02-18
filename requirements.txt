@@ -1,0 +1,4 @@
+torch
+omegaconf
+pytorch-lightning
+scikit-learn

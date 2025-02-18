@@ -1,0 +1,41 @@
+seeds: 10
+
+encdec:
+  - 2048
+  - 256
+  - &bn_layer 128
+  - 256
+  - 2048
+
+clustering_layer:
+  - *bn_layer
+  - 1024
+
+dataset_path: /path/to/voc_data_version1.pkl
+batch_size: 360
+stage_I_epochs: 100
+stage_II_epochs: 200
+stage_III_epochs: 300
+
+train_fusion_start_epochs: 250000
+apply_reliable_pseudo_labels: true
+pseudo_labels_k: 25
+train_with_pseudo_labels_shuffle: true
+cosine_neighbor_threshold: 0.5 # in range [-1,1]
+
+lr: 0.001
+
+logs_dir: logs
+
+trainer:
+  accelerator: gpu
+  devices: 1
+  max_epochs: 600
+  deterministic: true
+  logger: true
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 10
+  enable_checkpointing: false
+  sync_batchnorm: true
+  num_sanity_val_steps: 0
+  enable_progress_bar: true

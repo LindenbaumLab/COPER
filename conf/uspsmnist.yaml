@@ -1,0 +1,43 @@
+seeds: 10
+
+use_decoder: false
+encdec:
+  - 1024
+  - 512
+  - &bn_layer 128
+  - 512
+  - 1024
+
+clustering_layer:
+  - *bn_layer # should be the same!
+  - 1024
+
+dataset_path: /path/to/mnist_usps_data_version1.pkl
+batch_size: 500
+stage_I_epochs: 10
+stage_II_epochs: 20
+stage_III_epochs: 30
+
+train_fusion_start_epochs: 100000
+apply_reliable_pseudo_labels: true
+pseudo_labels_k: 50 # set it to be batchsize/num clusters
+train_with_pseudo_labels_shuffle: true
+cosine_neighbor_threshold: 0.5 # in range [-1,1]
+normalize_embeddings: false
+
+lr: 0.001
+
+logs_dir: logs
+
+trainer:
+  accelerator: gpu
+  devices: 1
+  max_epochs: 600
+  deterministic: true
+  logger: true
+  log_every_n_steps: 10
+  check_val_every_n_epoch: 10
+  enable_checkpointing: false
+  sync_batchnorm: true
+  num_sanity_val_steps: 0
+  enable_progress_bar: true
